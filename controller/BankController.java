@@ -57,9 +57,18 @@ public class BankController {
 						break;
 
 					case "6":
-
+						memberService.updatePass(
+								JOptionPane.showInputDialog("아이디를 입력하세요."),
+								JOptionPane.showInputDialog("비밀번호를 입력하세요."),
+								JOptionPane.showInputDialog("변경하실 비밀번호를 입력하세요.")
+								);
 						break;
-
+					case "7":
+						memberService.deleteMember(
+								JOptionPane.showInputDialog("아이디를 입력하세요."),
+								JOptionPane.showInputDialog("비밀번호를 입력하세요.")
+								);
+						break;
 			}
 		}
 	}

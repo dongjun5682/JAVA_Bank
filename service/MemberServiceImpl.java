@@ -10,9 +10,10 @@ import domain.MemberBean;
 public class MemberServiceImpl implements MemberService {
 
 	private MemberBean[] members;
-	private int count;
 	
-	 public MemberServiceImpl(){
+	private int count;
+
+	public MemberServiceImpl(){
 		members = new MemberBean[10];
 		count = 0;
 	}
@@ -25,26 +26,26 @@ public class MemberServiceImpl implements MemberService {
 		member.setSsn(ssn);
 		members[count] = member;
 		count++;
-		
+
 	}
 
 	@Override
 	public MemberBean[] findAll() {
 		return members;
 	}
-	
+
 	@Override
 	public MemberBean[] findByName(String name) {
-		MemberBean member = new MemberBean();
-		for (int i = 0; i < count; i++) {
-			if(members[i].getId().equals(name)){
-				
-				break;
+	MemberBean[] memberBeans = new MemberBean[count];
+		for (int i = 0,j=0; i < count; i++) {
+			if(members[i].getName().equals(name)){
+				memberBeans[j] = members[i];
+				j++;
 			}
 		}
-		return members;
+		return memberBeans;
 	}
-	
+
 	@Override
 	public MemberBean findById(String id) {
 		MemberBean member = new MemberBean();
@@ -72,18 +73,29 @@ public class MemberServiceImpl implements MemberService {
 			}
 		}
 		return login;
-				
+
 	}
 
 	@Override
 	public void updatePass(String id, String pass, String newPass) {
-		
+		for (int i = 0; i < count; i++) {
+			if (existMember(id,pass)) {
+				members[i].setPass(newPass);
+				break;
+			}
+		}
 	}
 
 	@Override
 	public void deleteMember(String id, String pass) {
-		// TODO Auto-generated method stub
-		
+		for (int i = 0; i < count; i++) {
+			if (existMember(id,pass)) {
+				members[i] = members[count-1];
+				members[count-1] = null;
+				count--;
+				break;
+			}
+		}
 	}
 
 
