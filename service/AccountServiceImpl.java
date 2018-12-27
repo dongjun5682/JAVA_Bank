@@ -18,8 +18,9 @@ public class AccountServiceImpl implements AccountService {
 	public AccountServiceImpl() {
 		list = new ArrayList<>();
 	}
+
 	/************************
-	 * CREATE	
+	 * CREATE
 	 ***********************/
 
 	@Override
@@ -32,16 +33,17 @@ public class AccountServiceImpl implements AccountService {
 		list.add(account);
 		return msg;
 	}
+
 	@Override
 	public String createAccountNum() {
 		Random random = new Random();
 		String accountNum = "";
 
 		for (int i = 0; i < 8; i++) {
-			if(i != 3){
+			if (i != 3) {
 				accountNum += random.nextInt(10);
-			}else{
-				accountNum += random.nextInt(10)+"-";
+			} else {
+				accountNum += random.nextInt(10) + "-";
 			}
 		}
 		return accountNum;
@@ -49,7 +51,7 @@ public class AccountServiceImpl implements AccountService {
 
 	/************************
 	 * READ
-	 ***********************/	
+	 ***********************/
 	@Override
 	public ArrayList<AccountBean> findAll() {
 		// TODO Auto-generated method stub
@@ -88,33 +90,33 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public String findDate() {
-		String today = "";
+
 		Date date = new Date();
 		SimpleDateFormat simpDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		today = simpDate.format(date);
-		return today;
+
+		return simpDate.format(date);
 	}
 
 	/************************
 	 * UPDATE
-	 ***********************/	
+	 ***********************/
 	@Override
-	public String depositMoney(String accountNum,String money) {
+	public String depositMoney(String accountNum, String money) {
 		String msg = "";
 		int moneys = Integer.parseInt(money);
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getAccountNum().equals(accountNum)) {
 				if (moneys >= 0) {
-					int resMoney =list.get(i).getMoney();
+					int resMoney = list.get(i).getMoney();
 					resMoney += moneys;
 					list.get(i).setMoney(resMoney);
-					msg = money+"원 입금되었습니다.";
+					msg = money + "원 입금되었습니다.";
 					break;
-				}else{
+				} else {
 					msg = "입금액을 잘못입력하셨습니다.";
 					break;
 				}
-			}else{
+			} else {
 				msg = "계좌번호가 틀렸습니다.";
 			}
 		}
@@ -122,23 +124,22 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public String withdrawalMoney(String accountNum,String money) {
+	public String withdrawalMoney(String accountNum, String money) {
 		String msg = "";
 		int moneys = Integer.parseInt(money);
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getAccountNum().equals(accountNum)) {
 				int resMoney = list.get(i).getMoney();
-				if ((resMoney-moneys ) >= 0) {
+				if ((resMoney - moneys) >= 0) {
 					resMoney -= moneys;
 					list.get(i).setMoney(resMoney);
 					msg = money + "원 출금되었습니다.";
 					break;
-				}else{
+				} else {
 					msg = "잔액이 부족합니다";
 					break;
 				}
-
-			}else{
+			} else {
 				msg = "계좌번호가 틀렸습니다.";
 			}
 		}
@@ -147,19 +148,16 @@ public class AccountServiceImpl implements AccountService {
 
 	/************************
 	 * DELETE
-	 ***********************/	
+	 ***********************/
 	@Override
 	public AccountBean deleteAccountNum(String accountNum) {
 		AccountBean acBean = new AccountBean();
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getAccountNum().equals(accountNum)) {
-				acBean= list.remove(i);
+				acBean = list.remove(i);
 				break;
 			}
 		}
 		return acBean;
 	}
-
-
-
 }

@@ -6,39 +6,44 @@ package domain;
  * @desc 은행멤버 빈객체
  */
 public class MemberBean {
-	
-private String id,name,ssn,pass;
-	
-	public void setId(String id){
+
+	private String id, name, ssn, pass;
+
+	public void setId(String id) {
 		this.id = id;
 	}
-	public String getId(){
+
+	public String getId() {
 		return id;
 	}
-	public void setName(String name){
+
+	public void setName(String name) {
 		this.name = name;
 	}
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
-	public void setSsn(String ssn){
+
+	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
-	public String getSsn(){
+
+	public String getSsn() {
 		return ssn;
 	}
-	public void setPass(String pass){
+
+	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	public String getPass(){
+
+	public String getPass() {
 		return pass;
 	}
+
 	@Override
 	public String toString() {
-		return String.format("[계좌정보]\n"
-				+ "아이디 : %s\n"
-				+ "패스워드 : %s\n"
-				+ "이름 : %s\n"
-				+ "주민번호 : %s\n", id,pass,name,ssn);
+		return String.format("[계좌정보]\n" + "아이디 : %s\n" + "패스워드 : %s\n" + "이름 : %s\n" + "주민번호 : %s\n", id, pass, name,
+				ssn);
 	}
 }

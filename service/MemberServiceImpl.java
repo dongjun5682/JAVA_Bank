@@ -12,12 +12,13 @@ public class MemberServiceImpl implements MemberService {
 	private MemberBean[] members;
 	private int count;
 
-	public MemberServiceImpl(){
+	public MemberServiceImpl() {
 		members = new MemberBean[10];
 		count = 0;
 	}
+
 	@Override
-	public void creatMember(String id,String pass,String name,String ssn) {
+	public void creatMember(String id, String pass, String name, String ssn) {
 		MemberBean member = new MemberBean();
 		member.setId(id);
 		member.setPass(pass);
@@ -44,10 +45,10 @@ public class MemberServiceImpl implements MemberService {
 		MemberBean[] memberBeans = new MemberBean[j];
 		j = 0;
 		for (int i = 0; i < count; i++) {
-			if(members[i].getName().equals(name)){
+			if (members[i].getName().equals(name)) {
 				memberBeans[j] = members[i];
 				j++;
-				if(j == memberBeans.length){
+				if (j == memberBeans.length) {
 					break;
 				}
 			}
@@ -59,7 +60,7 @@ public class MemberServiceImpl implements MemberService {
 	public MemberBean findById(String id) {
 		MemberBean member = new MemberBean();
 		for (int i = 0; i < count; i++) {
-			if(members[i].getId().equals(id)){
+			if (members[i].getId().equals(id)) {
 				member = members[i];
 				break;
 			}
@@ -88,7 +89,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void updatePass(String id, String pass, String newPass) {
 		for (int i = 0; i < count; i++) {
-			if (existMember(id,pass)) {
+			if (existMember(id, pass)) {
 				members[i].setPass(newPass);
 				break;
 			}
@@ -98,14 +99,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void deleteMember(String id, String pass) {
 		for (int i = 0; i < count; i++) {
-			if (existMember(id,pass)) {
-				members[i] = members[count-1];
-				members[count-1] = null;
+			if (existMember(id, pass)) {
+				members[i] = members[count - 1];
+				members[count - 1] = null;
 				count--;
 				break;
 			}
 		}
 	}
-
 
 }

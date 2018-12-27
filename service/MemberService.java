@@ -8,16 +8,21 @@ import domain.MemberBean;
  * @desc 은행계좌 서비스
  */
 public interface MemberService {
-	
-	public void creatMember(String id,String pass,String name,String ssn);
-	
+
+	public void creatMember(String id, String pass, String name, String ssn);
+
 	public MemberBean[] findAll();
-	public MemberBean[]  findByName(String name);
+
+	public MemberBean[] findByName(String name);
+
 	public MemberBean findById(String id);
+
 	public int countMember();
-	public boolean existMember(String id ,String pass);
-	
+
+	public boolean existMember(String id, String pass);
+
 	public void updatePass(String id, String pass, String newPass);
+
 	public void deleteMember(String id, String pass);
-	
+
 }

@@ -11,22 +11,28 @@ import domain.AccountBean;
  */
 public interface AccountService {
 
-	//CREATE
+	// CREATE
 	public String createAccount(int money);
+
 	public String createAccountNum();
-	//READ
+
+	// READ
 	public ArrayList<AccountBean> findAll();
+
 	public AccountBean findByAccountNum(String accountNum);
+
 	public int countAccount();
+
 	public boolean existAccountNum(String accountNum);
-	public String findDate(); 
-	//UPDATE
-	public String depositMoney(String accountNum,String money); 
-	public String withdrawalMoney(String accountNum,String money); 
-	//DELETE
+
+	public String findDate();
+
+	// UPDATE
+	public String depositMoney(String accountNum, String money);
+
+	public String withdrawalMoney(String accountNum, String money);
+
+	// DELETE
 	public AccountBean deleteAccountNum(String accountNum);
-	
-	
-	
-	
+
 }
