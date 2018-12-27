@@ -10,7 +10,6 @@ import domain.MemberBean;
 public class MemberServiceImpl implements MemberService {
 
 	private MemberBean[] members;
-	
 	private int count;
 
 	public MemberServiceImpl(){
@@ -36,11 +35,21 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberBean[] findByName(String name) {
-	MemberBean[] memberBeans = new MemberBean[count];
-		for (int i = 0,j=0; i < count; i++) {
+		int j = 0;
+		for (int i = 0; i < members.length; i++) {
+			if (members[i].getName().equals(name)) {
+				count++;
+			}
+		}
+		MemberBean[] memberBeans = new MemberBean[j];
+		j = 0;
+		for (int i = 0; i < count; i++) {
 			if(members[i].getName().equals(name)){
 				memberBeans[j] = members[i];
 				j++;
+				if(j == memberBeans.length){
+					break;
+				}
 			}
 		}
 		return memberBeans;

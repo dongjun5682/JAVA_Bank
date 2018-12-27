@@ -28,7 +28,7 @@ public class AccountBean {
 	}
 	@Override
 	public String toString() {
-		return "°èÁÂ [accountNum=" + accountNum + ", today=" + today + ", money=" + money + "]";
+		return "\n °èÁÂÁ¤º¸ [°èÁÂÁ¤º¸: " + accountNum + ", °³¼³³¯Â¥: " + today + ", ÀÜ¾× : " + money + "]";
 	}
 	
 	
