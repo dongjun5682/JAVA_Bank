@@ -83,7 +83,7 @@ public class BankController {
 					break;
 				case "4":
 					boolean exist = accountSerivce.existAccountNum(JOptionPane.showInputDialog("계좌번호를 입력하세요."));
-					JOptionPane.showMessageDialog(null, exist ? "연결되었습니다." : "잘못된 계좌번호 입니다.");
+					JOptionPane.showMessageDialog(null, exist ? "계좌가 있습니다." : "없는 계좌번호 입니다.");
 					break;
 				case "5":
 					msg = accountSerivce.depositMoney(JOptionPane.showInputDialog("계좌번호를 입력하세요."),
@@ -97,7 +97,7 @@ public class BankController {
 					break;
 				case "7":
 					account = accountSerivce.deleteAccountNum(JOptionPane.showInputDialog("계좌번호를 입력하세요."));
-					JOptionPane.showMessageDialog(null, account);
+					JOptionPane.showMessageDialog(null, "삭제된 정보 \n"+account);
 					break;
 				}
 				break;

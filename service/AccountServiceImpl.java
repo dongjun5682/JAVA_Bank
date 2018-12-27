@@ -130,7 +130,7 @@ public class AccountServiceImpl implements AccountService {
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getAccountNum().equals(accountNum)) {
 				int resMoney = list.get(i).getMoney();
-				if ((resMoney - moneys) >= 0) {
+				if (resMoney  >= moneys) {
 					resMoney -= moneys;
 					list.get(i).setMoney(resMoney);
 					msg = money + "원 출금되었습니다.";
